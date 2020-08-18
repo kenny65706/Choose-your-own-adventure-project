@@ -40,7 +40,9 @@ namespace Short_Adventure
 				//setting the bool in the while loop fixed issue where play again auto killed user when choosing path west or east
 				bool dead =false;
 				Console.Clear();
-				RenderScreen("Dangerous Delivery \n\n\nDay 1 Morning \nYou walk into the guild hall. You are broke and looking for work. \nAs you approach the board the guild attendent smiles and greets you\n\"Hello and welcome to the guild hall. What is your name?\"");
+				RenderScreen("Dangerous Delivery"); 
+				RenderScreen("Day 1 Morning");
+				RenderScreen("You walk into the guild hall. You are broke and looking for work. \nAs you approach the board the guild attendent smiles and greets you\n\"Hello and welcome to the guild hall. What is your name?\"");
 				string your_name = Console.ReadLine();
 				Console.Write(string.Format("\"Well met {0} it is nice to meet you. What can I do to assist you today\"\n\"Looking for work.\"You explain.\"\n\"Perfect! We have a job that requires you to deliver this medicine to the elder of a nearby village. Do you want to take on this task?\"(please type 'yes' or'no'): ", your_name));
 				String accept_quest_input = Console.ReadLine().ToLower().Trim();
