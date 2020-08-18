@@ -7,36 +7,21 @@ namespace Short_Adventure
 	
 	   static int RenderScreen(string output)
         {
+            Console.Clear();
             int line_length = 80;
-            Console.WriteLine("".PadRight(line_length,'='));
-            if (output.Length > line_length - 10)
-            {
-               
-                int num_lines = output.Length / (line_length - 10)+1;
-                for (int i = 0; i < num_lines; i++)
-                {
-                     if (i == num_lines -1)
-                     {
-                        Console.WriteLine("| " + output.Substring((line_length - 10) * i, output.Length - (line_length - 10) * i).PadRight(line_length -3) + "|");
-                     }
-                    else 
-                    { 
-                      Console.WriteLine("| " + output.Substring((line_length - 10) * i, line_length - 10).PadRight(line_length - 3)+"|");
-                    }
-                }
+            int desired_length = line_length - 5;
 
-             //do something
-            }
-            else
-            {
-                Console.WriteLine("| " + output.PadRight(line_length - 3) + "|");
-            }
-            
             Console.WriteLine("".PadRight(line_length, '='));
+            while (output.Length > desired_length)
+            {
+                Console.WriteLine("| " + output.Substring(0, desired_length).PadRight(line_length - 3) + "|");
+                output = output.Remove(0, desired_length);
+            }
+            Console.WriteLine("| " + output.PadRight(line_length - 3) + "|");
+            Console.WriteLine("".PadRight(line_length, '='));
+            Console.ReadLine();
             return output.Length;
         }
-	
-	
 	
 	static void Main(string[] args)
 		{
