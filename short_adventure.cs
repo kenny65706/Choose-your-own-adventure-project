@@ -4,6 +4,40 @@ namespace Short_Adventure
 {
 	class program
 	{
+	
+	   static int RenderScreen(string output)
+        {
+            int line_length = 80;
+            Console.WriteLine("".PadRight(line_length,'='));
+            if (output.Length > line_length - 10)
+            {
+               
+                int num_lines = output.Length / (line_length - 10)+1;
+                for (int i = 0; i < num_lines; i++)
+                {
+                     if (i == num_lines -1)
+                     {
+                        Console.WriteLine("| " + output.Substring((line_length - 10) * i, output.Length - (line_length - 10) * i).PadRight(line_length -3) + "|");
+                     }
+                    else 
+                    { 
+                      Console.WriteLine("| " + output.Substring((line_length - 10) * i, line_length - 10).PadRight(line_length - 3)+"|");
+                    }
+                }
+
+             //do something
+            }
+            else
+            {
+                Console.WriteLine("| " + output.PadRight(line_length - 3) + "|");
+            }
+            
+            Console.WriteLine("".PadRight(line_length, '='));
+            return output.Length;
+        }
+	
+	
+	
 	static void Main(string[] args)
 		{
 			//creating a choose your own adventure
