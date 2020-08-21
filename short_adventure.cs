@@ -19,7 +19,7 @@ namespace Short_Adventure
             }
             Console.WriteLine("| " + output.PadRight(line_length - 3) + "|");
             Console.WriteLine("".PadRight(line_length, '='));
-            Console.ReadLine();
+            Console.ReadKey();
             return output.Length;
         }
 	
@@ -32,7 +32,9 @@ namespace Short_Adventure
 			//Console.Readkey allowed for a pause for user to read and continue when ready. 
 			//Console.Clear allowed for ease of reading, avoiding massive wall of text
 			//Edit grammar and mispelling on multiple dialogue.
-			
+			//bugs
+			//need to add loop to wolf answer to avoid crash
+			//need to fix error when in wrong answer loop. has something to do with render screen function
 			int exhaustion = 2;
 			bool play_again = true;
 			while (play_again)
@@ -44,11 +46,12 @@ namespace Short_Adventure
 				RenderScreen("Day 1 Morning");
 				RenderScreen("You walk into the guild hall. You are broke and looking for work. \nAs you approach the board the guild attendent smiles and greets you\n\"Hello and welcome to the guild hall. What is your name?\"");
 				string your_name = Console.ReadLine();
-				Console.Write(string.Format("\"Well met {0} it is nice to meet you. What can I do to assist you today\"\n\"Looking for work.\"You explain.\"\n\"Perfect! We have a job that requires you to deliver this medicine to the elder of a nearby village. Do you want to take on this task?\"(please type 'yes' or'no'): ", your_name));
+				RenderScreen(string.Format("\"Well met {0} it is nice to meet you. What can I do to assist you today\"\n\"Looking for work.\"You explain.\"\n\"Perfect! We have a job that requires you to deliver this medicine to the elder of a nearby village. Do you want to take on this task?\"(please type 'yes' or'no'): ", your_name));
 				String accept_quest_input = Console.ReadLine().ToLower().Trim();
 				while(accept_quest_input != "yes" && accept_quest_input != "no")
 				{
 					RenderScreen("I'm sorry"+" "+your_name+" , I don't speak gibberling. Can you plainly say yes or no?: ");
+					accept_quest_input = 0
 					accept_quest_input = Console.ReadLine().ToLower().Trim();
 				}
 				if (accept_quest_input == "yes")
@@ -59,7 +62,7 @@ namespace Short_Adventure
 					RenderScreen("You leave the guild hall and proceed to head south. You know the way to the nearby village the guild attendant spoke about. It's just over a days travel away.\nAfter an hour you check your gear.\nSword? Check!\nFood? Uh,only one days worth of food.\nYou curse yourself for spending all that money on booze the night before. You have a job to do and this should be enough to get you there.\nPress any key to continue.");
 					Console.ReadKey();
 					RenderScreen("Day 1 Afternoon");
-					RenderScreen("You continue south towards the mountain until you get to the southern pass. The land is barren, lifeless. The pass goes through a crevice in thhe mountain about two men wide if they were to stand shoulder to shoulder.");
+					RenderScreen("You continue south towards the mountain until you get to the southern pass.The land is barren, lifeless. The pass goes through a crevice in thhe mountain about two men wide if they were to stand shoulder to shoulder.");
 					RenderScreen("As you start to head into the crevice, you here a growl behind you. You turn around reflexively to see a grey wolf baring teeth ");
 					RenderScreen("The wolf takes a step back. You take this time to further inspect the beast. It looks thin, most likely from trying to survive in this meager enviroment. You could probably scare it off with out causing it harm. You could also feed it your only days worth of rations. You won't starve but it will make the trip less enjoyable.");
 					RenderScreen("Do you feed the wolf or attack? Please type 'attack' or 'feed'");
